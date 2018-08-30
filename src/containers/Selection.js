@@ -1,17 +1,27 @@
 import React, { Component } from 'react';
-import { Grid, Segment } from 'semantic-ui-react';
-import DayMealMenu from './DayMealMenu';
-import WeekDaysMenu from './WeekDaysMenu';
-import Dish from './Dish';
-import meals from '../test/meals_data';
 
-export default class Selection extends Component {
+////// Reducers
+/////////////////////////
+import {connect} from 'react-redux';
+
+////// UI
+/////////////////////////
+import { Grid } from 'semantic-ui-react';
+
+////// Components
+/////////////////////////
+import DayMealMenu from '../components/DayMealMenu';
+import WeekDaysMenu from '../components/WeekDaysMenu';
+import Dish from '../components/Dish';
+
+class Selection extends Component {
     state = {
         leftLen: 4,
         rightLen: 12
     }
     render() {
         const {leftLen, rightLen} = this.state;
+        const { meals, selected} = this.props.meals;
         return (
             <div>
                 <Grid>
@@ -20,12 +30,12 @@ export default class Selection extends Component {
 
                         </Grid.Column>
                         <Grid.Column width={rightLen}>
-                            <WeekDaysMenu/>
+                            <WeekDaysMenu selected={selected}/>
                         </Grid.Column>
                     </Grid.Row>
                     <Grid.Row>
                         <Grid.Column width={leftLen}>
-                            <DayMealMenu/>
+                            <DayMealMenu meals={meals}/>
                         </Grid.Column>
                         <Grid.Column width={rightLen}>
                                 <Dish meal={meals[0][0]}/>
@@ -39,3 +49,12 @@ export default class Selection extends Component {
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return{
+        meals: state.meals,
+        selected: state.selected
+    }
+}
+
+export default connect(mapStateToProps)(Selection);
