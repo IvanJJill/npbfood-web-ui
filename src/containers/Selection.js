@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 ////// Reducers
 /////////////////////////
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 ////// UI
 /////////////////////////
@@ -20,8 +20,8 @@ class Selection extends Component {
         rightLen: 12
     }
     render() {
-        const {leftLen, rightLen} = this.state;
-        const { meals, selected} = this.props.meals;
+        const { leftLen, rightLen } = this.state;
+        const { meals, selected } = this.props;
         return (
             <div>
                 <Grid>
@@ -30,18 +30,18 @@ class Selection extends Component {
 
                         </Grid.Column>
                         <Grid.Column width={rightLen}>
-                            <WeekDaysMenu selected={selected}/>
+                            <WeekDaysMenu selected={selected} />
                         </Grid.Column>
                     </Grid.Row>
                     <Grid.Row>
                         <Grid.Column width={leftLen}>
-                            <DayMealMenu meals={meals}/>
+                            <DayMealMenu meals={meals} />
                         </Grid.Column>
                         <Grid.Column width={rightLen}>
-                                <Dish meal={meals[0][0]}/>
-                                <Dish meal={meals[0][1]} />
-                                <Dish meal={meals[0][2]} />
-                                <Dish meal={meals[0][3]} />
+                            <Dish meal={meals[selected][0]} />
+                            <Dish meal={meals[selected][1]} />
+                            <Dish meal={meals[selected][2]} />
+                            <Dish meal={meals[selected][3]} />
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
@@ -51,10 +51,13 @@ class Selection extends Component {
 }
 
 const mapStateToProps = (state) => {
-    return{
+
+    return {
+        // Data from redux
         meals: state.meals,
+        // Actions from redux
         selected: state.selected
     }
 }
 
-export default connect(mapStateToProps)(Selection);
+export default connect(mapStateToProps, null)(Selection);
