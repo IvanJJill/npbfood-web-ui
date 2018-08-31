@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { Menu, MenuItem } from 'semantic-ui-react';
 import { MealNames } from '../test/meals_data';
 
-export default class DayMealMenu extends Component {
+import {connect} from 'react-redux';
+
+class DayMealMenu extends Component {
 
     onSelect = () => {
         return;
@@ -20,8 +22,21 @@ export default class DayMealMenu extends Component {
     render() {
         return (
             <Menu pointing secondary vertical>
-                {this.renderMeals(0)}
+                {this.renderMeals(this.props.selected)}
             </Menu>
         )
     }
 }
+
+
+const mapStateToProps = (state) => {
+
+    return {
+        // Data from redux
+        meals: state.meals,
+        // Actions from redux
+        selected: state.selected
+    }
+}
+
+export default connect(mapStateToProps, null)(DayMealMenu);

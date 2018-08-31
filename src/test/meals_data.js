@@ -42,6 +42,11 @@ const lunch = {
     dishes: [main, desert]
 };
 
-const meals_data = [[breakfast, snack, lunch, snack], [breakfast, snack, lunch]];
+const lunch2 = {
+    id: 2,
+    dishes:[desert, fruit, porridge]
+}
+
+const meals_data = [[breakfast, lunch, snack], [ snack, lunch2, snack], [lunch, snack, breakfast]];
 
 export default meals_data;
