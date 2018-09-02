@@ -1,10 +1,21 @@
+////// System libs
+/////////////////////////
 import React, { Component } from 'react';
-import { Menu, MenuItem } from 'semantic-ui-react';
-import { MealNames } from '../test/meals_data';
-
 import {connect} from 'react-redux';
 
-class DayMealMenu extends Component {
+////// Mock Data
+/////////////////////////
+import { MealNames } from '../test/meals_data';
+
+////// App components
+/////////////////////////
+import { Menu, MenuItem } from 'semantic-ui-react';
+
+
+/**
+ * Class represents a 
+ */
+class DaylyMealsNames extends Component {
 
     onSelect = () => {
         return;
@@ -28,7 +39,10 @@ class DayMealMenu extends Component {
     }
 }
 
-
+/**
+ * Maps data from reducers to this.props to update the state of the App
+ * @param {*} dispatch 
+ */
 const mapStateToProps = (state) => {
 
     return {
@@ -39,4 +53,7 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, null)(DayMealMenu);
+/**
+ * Connecting data to this class
+ */
+export default connect(mapStateToProps, null)(DaylyMealsNames);

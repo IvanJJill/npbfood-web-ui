@@ -6,7 +6,28 @@ export const MealNames = ["Breakfast", "Snack", "Lunch", "Dinner"];
 const porridge = {
     name: 'Porridge',
     amount: 250,
-    kcal: 1000
+    kcal: 1000,
+    ingredients:{
+        oat_flakes:{
+            id: 11,
+            name: "oat flakes",
+            amount: 130,
+            cooked: true,
+            kcal: 400
+        },
+        milk:{
+            name: "milk",
+            amount: 100,
+            cooked: false,
+            kcal: 300
+        },
+        honey:{
+            name: "honey",
+            amount: 20,
+            cooked: false,
+            kcal: 300
+        } 
+    }
 }
 const breakfast = {
     id: 0, // for Breakfast
@@ -47,6 +68,19 @@ const lunch2 = {
     dishes:[desert, fruit, porridge]
 }
 
-const meals_data = [[breakfast, lunch, snack], [ snack, lunch2, snack], [lunch, snack, breakfast]];
+
+/////    Week days schedled meals
+/////////////////////
+const monday = [breakfast, lunch, snack];
+const tuesday = [snack, lunch2, snack];
+const wednesday = [lunch, snack, breakfast];
+const thursday = [];
+const friday = [];
+const saturday = [];
+const sunday = [];
+
+/////    Whole week
+/////////////////////
+const meals_data = [monday, tuesday , wednesday, thursday, friday, saturday, sunday ];
 
 export default meals_data;

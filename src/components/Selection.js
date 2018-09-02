@@ -1,3 +1,5 @@
+////// System libs
+/////////////////////////
 import React, { Component } from 'react';
 
 ////// UI
@@ -6,10 +8,16 @@ import { Grid } from 'semantic-ui-react';
 
 ////// Components
 /////////////////////////
-import DayMealMenu from '../components/DayMealMenu';
-import WeekDaysMenu from '../components/WeekDaysMenu';
-import Dish from '../components/Dish';
+import DaylyMealsNames from '../containers/DaylyMealsNames';
+import WeekDaysMenu from '../containers/WeekDaysMenu';
+import Dish from '../containers/Dish';
 
+
+/**
+ * Class represents a weekly selection Component
+ * It contains selectors for a day of the week as well as meals
+ * Also displays all dayly meals and dishes
+ */
 export default class Selection extends Component {
     state = {
         leftLen: 4,
@@ -22,7 +30,7 @@ export default class Selection extends Component {
                 <Grid>
                     <Grid.Row>
                         <Grid.Column width={leftLen}>
-
+                            {/* ToDo: place user account controls here */}
                         </Grid.Column>
                         <Grid.Column width={rightLen}>
                             <WeekDaysMenu/>
@@ -30,7 +38,7 @@ export default class Selection extends Component {
                     </Grid.Row>
                     <Grid.Row>
                         <Grid.Column width={leftLen}>
-                            <DayMealMenu />
+                            <DaylyMealsNames />
                         </Grid.Column>
                         <Grid.Column width={rightLen}>
                             <Dish />

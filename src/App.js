@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Selection from './containers/Selection';
+import Selection from './components/Selection';
 
 export default class App extends Component {
   render() {

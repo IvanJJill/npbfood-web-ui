@@ -6,7 +6,7 @@ import WeekDay from '../settings/WeekConst.js'
 /////////////////////////
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import weekDaySelect from '../actions/index';
+import weekDaySelect from '../actions/index.js';
 
 /**
  * Class represents a component that contains a whole week of meal-planning
@@ -31,11 +31,14 @@ class WeekDaysMenu extends Component {
      */
     renderSelector = (dayNumber) => {
         const days = WeekDay.fullName;
-        const { selected } = this.props;
+        const { selected } = this.state;
         return (
             <Menu.Item key={days[dayNumber] + dayNumber} name={days[dayNumber]}
                 active={selected === dayNumber}
-                onClick={() => this.props.weekDaySelect(dayNumber)}
+                onClick={() => {
+                    this.props.weekDaySelect(dayNumber); 
+                    this.setState({selected: dayNumber});
+                }}
             />
 
         );
