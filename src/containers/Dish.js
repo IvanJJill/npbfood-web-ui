@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Label, Segment } from 'semantic-ui-react';
+import { Label, Segment, Grid } from 'semantic-ui-react';
 
 import { connect } from 'react-redux';
 /**
@@ -34,9 +34,9 @@ class Dish extends Component {
 
     render() {
         return (
-            <div>
+            <Grid.Column>
                 {this.renderDayMeal()}
-            </div>
+            </Grid.Column>
         )
     }
 }
