@@ -8,10 +8,8 @@ import { Grid } from 'semantic-ui-react';
 
 ////// Components
 /////////////////////////
-import DaylyMealsNames from '../containers/DaylyMealsNames';
-import WeekDaysMenu from '../containers/WeekDaysMenu';
-import Dish from '../containers/Dish';
-
+import DayMeals from '../containers/DayMeals';
+import DaySelect from '../containers/DaySelect';
 
 /**
  * Class represents a weekly selection Component
@@ -19,33 +17,28 @@ import Dish from '../containers/Dish';
  * Also displays all dayly meals and dishes
  */
 export default class Selection extends Component {
-    state = {
-        leftLen: 4,
-        rightLen: 12
-    }
-    render() {
-        const { leftLen, rightLen } = this.state;
-        return (
-            <div>
-                <Grid>
-                    <Grid.Row>
-                        <Grid.Column width={leftLen}>
-                            {/* ToDo: place user account controls here */}
-                        </Grid.Column>
-                        <Grid.Column width={rightLen}>
-                            <WeekDaysMenu/>
-                        </Grid.Column>
-                    </Grid.Row>
-                    <Grid.Row>
-                        <Grid.Column width={leftLen}>
-                            <DaylyMealsNames />
-                        </Grid.Column>
-                        <Grid.Column width={rightLen}>
-                            <Dish />
-                        </Grid.Column>
-                    </Grid.Row>
-                </Grid>
-            </div>
-        )
-    }
+  state = {
+    leftLen: 4,
+    rightLen: 12
+  };
+  render() {
+    const { leftLen, rightLen } = this.state;
+    const { Row, Column } = Grid;
+    return (
+      <div>
+        <Grid>
+          <Row>
+            <Column width={leftLen}>
+              {/* ToDo: place user account controls here */}
+            </Column>
+            <Column width={rightLen}>
+              <DaySelect />
+            </Column>
+          </Row>
+          {/* Displays All meals per selected day */}
+          <DayMeals />
+        </Grid>
+      </div>
+    );
+  }
 }
