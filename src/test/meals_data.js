@@ -2,56 +2,56 @@ export const MealNames = ['Breakfast', 'Snack', 'Lunch', 'Dinner'];
 export const MealTypes = ['Main', 'Desert', 'Drink'];
 
 export const Ingredients = {
-  11: {
+  '11': {
     name: 'oat flakes',
     amount: 130,
     cooked: true,
     kcal: 400
   },
-  12: {
+  '12': {
     name: 'milk',
     amount: 100,
     cooked: false,
     kcal: 300
   },
-  13: {
+  '13': {
     name: 'honey',
     amount: 20,
     cooked: false,
     kcal: 300
   },
-  14: {
+  '14': {
     name: 'apple',
     amount: 150,
     cooked: false,
     kcal: 50
   },
-  144: {
+  '144': {
     name: 'pear',
     amount: 150,
     cooked: false,
     kcal: 50
   },
-  145: {
+  '145': {
     name: 'banana',
     amount: 150,
     cooked: false,
     kcal: 50
   },
-  15: {
+  '15': {
     name: 'spagetti',
     amount: 100,
     cooked: false,
     kcal: 400
   },
-  16: {
+  '16': {
     name: 'tomato sauce',
     amount: 25,
     cooked: true,
     kcal: 25
   },
-  17: {
-    name: 'cake',
+  '17': {
+    name: 'chocolate cake',
     amount: 100,
     cooked: true,
     kcal: 600
@@ -74,6 +74,7 @@ const porridge = {
   portions: 1,
   amount: 250,
   ingredients: [11, 12, 13],
+  image: '/img/porridge.jpeg',
   cook: [
     {
       first: {
@@ -93,7 +94,8 @@ const fruit = {
   type: 1, // for Desert dish
   portions: 1,
   amount: 2,
-  ingredients: [14, 144]
+  ingredients: [14, 144],
+  image: '/img/fruit.jpeg'
 };
 
 const main = {
@@ -101,14 +103,16 @@ const main = {
   type: 0, // for Main dish
   portions: 1,
   amount: 300,
-  ingredients: [15, 16]
+  ingredients: [15, 16],
+  image: '/img/spagetti.jpeg'
 };
 const desert = {
   name: 'Cake',
   type: 1, // for Desert dish
   portions: 1,
   amount: 100,
-  ingredients: [17]
+  ingredients: [17],
+  image: '/img/cake.jpeg'
 };
 
 /////    Meal: Breakfast
@@ -132,7 +136,7 @@ const snack = {
 
 const lunch = {
   id: 2, // for Lunch
-  dishes: [main, desert]
+  dishes: [main, desert, fruit]
 };
 
 const lunch2 = {
