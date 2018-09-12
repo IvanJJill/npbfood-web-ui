@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Image, Icon } from 'semantic-ui-react';
+import { Card, Image } from 'semantic-ui-react';
 
 import { Ingredients } from '../test/meals_data';
 import DishCardControls from './DishCardControls';
@@ -12,15 +12,18 @@ export default class DishCard extends Component {
   };
 
   onInfo = () => {
-    return null;
+    const { expand, info } = this.state;
+    this.setState({ expand: !(info && expand), info: !info, edit: false });
   };
 
   onEdit = () => {
-    return null;
+    const { expand, edit } = this.state;
+    this.setState({ expand: !(edit && expand), edit: !edit, info: false });
   };
 
   render() {
     const { dish, idx } = this.props;
+    const { expand, info, edit } = this.state;
     return (
       <Card
         key={idx + dish.name}
@@ -29,11 +32,7 @@ export default class DishCard extends Component {
       >
         <Card.Content>
           <Image floated="left" size="mini" src={dish.image} circular />
-          {/* <div style={{ float: "right" }}>
-            <Icon circular bordered name="info" size="small" />
-            <Icon circular bordered color="teal" name="setting" size="small" />
-          </div> */}
-          <DishCardControls dish={dish} />
+          <DishCardControls onEdit={this.onEdit} onInfo={this.onInfo} />
           <Card.Header>{dish.name}</Card.Header>
           <Card.Meta>{dish.amount + 'g'}</Card.Meta>
           <Card.Description>
@@ -42,14 +41,11 @@ export default class DishCard extends Component {
               : null}
           </Card.Description>
         </Card.Content>
-        {/* <Card.Content extra>
-          <DishCardControls
-            dish={dish}
-            onExpand={() => this.onExpand}
-            onInfo={() => this.onInfo}
-            onEdit={() => this.onEdit}
-          />
-        </Card.Content> */}
+        {expand && (
+          <Card.Content extra>
+            {info ? dish.name : edit ? 'EDIT BUTTONS' : null}
+          </Card.Content>
+        )}
       </Card>
     );
   }

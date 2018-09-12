@@ -1,28 +1,20 @@
-import React, { Component } from 'react';
-import { Button, Icon, LabelGroup } from 'semantic-ui-react';
+import React from 'react';
+import { Button } from 'semantic-ui-react';
 
-export default class DishCardControls extends Component {
-  state = {
-    expand: false,
-    info: false,
-    edit: false
-  };
+const DishCardControls = props => {
+  return (
+    <div style={{ float: 'right' }}>
+      <Button as="a" size="tiny" icon="info" circular onClick={props.onInfo} />
+      <Button
+        as="a"
+        size="tiny"
+        icon="setting"
+        circular
+        color="teal"
+        onClick={props.onEdit}
+      />
+    </div>
+  );
+};
 
-  onInfo = () => {
-    return null;
-  };
-
-  onEdit = () => {
-    return null;
-  };
-
-  render() {
-    const { dish } = this.props;
-    return (
-      <div style={{ float: 'right' }}>
-        <Button as="a" size="tiny" icon="info" circular />
-        <Button as="a" size="tiny" icon="setting" circular color="teal" />
-      </div>
-    );
-  }
-}
+export default DishCardControls;
