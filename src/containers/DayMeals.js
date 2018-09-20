@@ -9,23 +9,34 @@ import { MealNames } from '../test/meals_data';
 
 ////// UI
 /////////////////////////
+import { DragDropContext } from 'react-beautiful-dnd';
+
 import MealRow from '../components/MealRow';
 
 /**
  * Class represents a
  */
+
 class DayMeals extends Component {
+  onDragEnd = result => {
+    return;
+  };
+
   render() {
     const { meals, selected } = this.props;
-    return meals[selected].map((meal, idx) => {
-      return (
-        <MealRow
-          key={idx + MealNames[meal.id]}
-          mealName={MealNames[meal.id]}
-          mealData={meal}
-        />
-      );
-    });
+    return (
+      <DragDropContext onDragEnd={this.onDragEnd}>
+        {meals[selected].map((meal, idx) => {
+          return (
+            <MealRow
+              key={'' + idx + MealNames[meal.id]}
+              mealName={MealNames[meal.id]}
+              mealData={meal}
+            />
+          );
+        })}
+      </DragDropContext>
+    );
   }
 }
 

@@ -56,17 +56,9 @@ class DaySelect extends Component {
 }
 
 /**
- * Maps actions to this.props to update the state of the App
- * @param {*} dispatch
- */
-const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ weekDaySelect: weekDaySelect }, dispatch);
-};
-
-/**
  * Connecting actions to this class
  */
 export default connect(
   null,
-  mapDispatchToProps
+  { weekDaySelect }
 )(DaySelect);
