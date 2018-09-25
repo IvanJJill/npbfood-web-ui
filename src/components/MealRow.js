@@ -4,7 +4,7 @@ import { Droppable } from 'react-beautiful-dnd';
 
 import MealDishes from './MealDishes';
 
-export default ({ mealName, mealData, key }) => {
+export default ({ mealName, mealData, id }) => {
   return (
     <GridRow columns="3">
       <GridColumn width={4} textAlign="right" verticalAlign="middle" size="23">
@@ -13,12 +13,12 @@ export default ({ mealName, mealData, key }) => {
       <GridColumn width={1} textAlign="center" verticalAlign="middle">
         <Icon name="plus circle" size="large" color="green" />
       </GridColumn>
-      <Droppable droppableId={key}>
+      <Droppable droppableId={id} direction="horizontal">
         {provided => (
           <Ref innerRef={provided.innerRef} {...provided.droppableProps}>
             <GridColumn width={11}>
               <Card.Group itemsPerRow={4}>
-                <MealDishes data={mealData} />
+                <MealDishes mealData={mealData} />
               </Card.Group>
               {provided.placeholder}
             </GridColumn>

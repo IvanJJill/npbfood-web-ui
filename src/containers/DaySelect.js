@@ -5,7 +5,6 @@ import WeekDay from '../settings/WeekConst.js';
 ////// Actions
 /////////////////////////
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import weekDaySelect from '../actions/index.js';
 
 /**

@@ -24,11 +24,10 @@ export default class DishCard extends Component {
   };
 
   render() {
-    const { dish, idx } = this.props;
+    const { dish, idx, id } = this.props;
     const { expand, info, edit } = this.state;
-    console.log('Ahoj!' + dish.name);
     return (
-      <Draggable draggableId={idx + dish.name} index={idx}>
+      <Draggable draggableId={id} index={idx}>
         {provided => (
           <Ref innerRef={provided.innerRef}>
             <Card

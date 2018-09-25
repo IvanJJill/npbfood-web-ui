@@ -3,6 +3,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+////// Utils
+/////////////////////////
+import { getMealId, getMealNameAndId } from '../utils';
+
 ////// Mock Data
 /////////////////////////
 import { MealNames } from '../test/meals_data';
@@ -19,7 +23,21 @@ import MealRow from '../components/MealRow';
 
 class DayMeals extends Component {
   onDragEnd = result => {
-    return;
+    const { destination, source, draggableId } = result;
+    if (!destination) {
+      return;
+    }
+    if (
+      source.droppableId === destination.droppableId &&
+      destination.index === source.index
+    ) {
+      return;
+    }
+
+    const [meal, mealIdx] = getMealNameAndId(destination.droppableId);
+
+    const row = this.props.meals[mealIdx]; // meal day
+    console.log(meal, row);
   };
 
   render() {
@@ -29,7 +47,8 @@ class DayMeals extends Component {
         {meals[selected].map((meal, idx) => {
           return (
             <MealRow
-              key={'' + idx + MealNames[meal.id]}
+              key={idx + '' + meal.id}
+              id={getMealId(MealNames[meal.id], idx)}
               mealName={MealNames[meal.id]}
               mealData={meal}
             />

@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 
 ////// UI
 /////////////////////////
-import { Grid, Divider } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 
 ////// Components
 /////////////////////////
