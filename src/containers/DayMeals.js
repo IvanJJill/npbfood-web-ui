@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 ////// Utils
 /////////////////////////
-import { getMealId, getMealNameAndId } from '../utils';
+import { getMealId } from '../utils';
 
 ////// Mock Data
 /////////////////////////
@@ -15,6 +15,10 @@ import { MealNames } from '../test/meals_data';
 /////////////////////////
 import { DragDropContext } from 'react-beautiful-dnd';
 
+////// Redux
+/////////////////////////
+import { mealDropped } from '../actions/index';
+
 import MealRow from '../components/MealRow';
 
 /**
@@ -23,21 +27,9 @@ import MealRow from '../components/MealRow';
 
 class DayMeals extends Component {
   onDragEnd = result => {
+    const { mealDropped } = this.props;
     const { destination, source, draggableId } = result;
-    if (!destination) {
-      return;
-    }
-    if (
-      source.droppableId === destination.droppableId &&
-      destination.index === source.index
-    ) {
-      return;
-    }
-
-    const [meal, mealIdx] = getMealNameAndId(destination.droppableId);
-
-    const row = this.props.meals[mealIdx]; // meal day
-    console.log(meal, row);
+    mealDropped(destination, source, draggableId);
   };
 
   render() {
@@ -77,5 +69,5 @@ const mapStateToProps = state => {
  */
 export default connect(
   mapStateToProps,
-  null
+  { mealDropped }
 )(DayMeals);

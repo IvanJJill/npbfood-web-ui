@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Menu } from 'semantic-ui-react';
-import WeekDay from '../settings/WeekConst.js';
+import WeekDay from '../settings/WeekConst';
 
 ////// Actions
 /////////////////////////
 import { connect } from 'react-redux';
-import weekDaySelect from '../actions/index.js';
+import { weekDaySelect } from '../actions/index';
 
 /**
  * Class represents a component that contains a whole week of meal-planning

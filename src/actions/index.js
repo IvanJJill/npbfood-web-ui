@@ -1,15 +1,15 @@
-const weekDaySelect = dayNubmer => {
+import actions from './actionTypes';
+
+export const weekDaySelect = dayNubmer => {
   return {
-    type: 'WEEK_DAY_SELECTED',
+    type: actions.WEEK_DAY_SELECTED,
     payload: dayNubmer
   };
 };
 
-export const mealDroped = id => {
+export const mealDropped = (destination, source, draggableId) => {
   return {
-    type: 'MEAL_WAS_DROPPED',
-    payload: id
+    type: actions.MEAL_WAS_DROPPED,
+    payload: { destination, source, draggableId }
   };
 };
-
-export default weekDaySelect;
