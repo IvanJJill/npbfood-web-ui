@@ -4,14 +4,17 @@ import { getMealNameAndId } from '../utils';
 export default (state = 0, action) => {
   switch (action.type) {
     case actions.MEAL_WAS_DROPPED:
-      const payload = reducerMealDropped(action.payload, state);
+      const payload = reducerMealDropped(state, action.payload);
       return payload;
     default:
       return state;
   }
 };
 
-const reducerMealDropped = (data, state) => {
+const reducerMealDropped = (state, data) => {
+  // this is a zahlushka
+  return state;
+
   const { destination, source, draggableId } = data;
 
   const { selected, meals } = state;
