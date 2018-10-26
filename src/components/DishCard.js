@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Card, Image } from 'semantic-ui-react';
 
-import DraggedItem from './DraggedItem';
+import DraggedItem from './DragWrapper';
 
 import { Ingredients } from '../test/meals_data';
 import DishCardControls from './DishCardControls';

@@ -13,9 +13,9 @@ const draggedItem = props => {
     <Draggable draggableId={id} index={index}>
       {provided => (
         <Ref innerRef={provided.innerRef}>
-          <div {...provided.dragHandleProps} {...provided.draggableProps}>
+          <Item {...provided.dragHandleProps} {...provided.draggableProps}>
             {props.children}
-          </div>
+          </Item>
         </Ref>
       )}
     </Draggable>
