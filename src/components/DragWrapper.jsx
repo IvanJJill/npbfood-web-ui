@@ -1,6 +1,6 @@
 import React from 'react';
 import { Draggable } from 'react-beautiful-dnd';
-import { Ref, Item } from 'semantic-ui-react';
+import { Ref } from 'semantic-ui-react';
 
 /**
  * Draggable wrapper component
@@ -13,9 +13,10 @@ const draggedItem = props => {
     <Draggable draggableId={id} index={index}>
       {provided => (
         <Ref innerRef={provided.innerRef}>
-          <Item {...provided.dragHandleProps} {...provided.draggableProps}>
-            {props.children}
-          </Item>
+          {React.cloneElement(props.children, {
+            ...provided.dragHandleProps,
+            ...provided.draggableProps
+          })}
         </Ref>
       )}
     </Draggable>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { GridColumn, GridRow, Card, Icon, Ref } from 'semantic-ui-react';
+import { GridColumn, GridRow, Card, Icon } from 'semantic-ui-react';
 import Droppable from './DropWrapper';
 
 import MealDishes from './MealDishes';

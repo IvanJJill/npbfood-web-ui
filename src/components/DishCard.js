@@ -27,12 +27,8 @@ export default class DishCard extends Component {
     const { dish, idx, id } = this.props;
     const { expand, info, edit } = this.state;
     return (
-      <DraggedItem id={id} index={idx}>
-        <Card
-          key={idx + dish.name}
-          className="dish-card"
-          style={{ width: '30%' }}
-        >
+      <DraggedItem id={id} index={idx} key={idx + dish.name}>
+        <Card className="dish-card">
           <Card.Content>
             <Image floated="left" size="mini" src={dish.image} circular />
             <DishCardControls onEdit={this.onEdit} onInfo={this.onInfo} />
