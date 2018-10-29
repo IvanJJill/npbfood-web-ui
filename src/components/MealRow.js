@@ -7,14 +7,12 @@ import MealDishes from './MealDishes';
 export default ({ mealName, mealData, id }) => {
   return (
     <GridRow columns="3">
-      <GridColumn width={4} textAlign="right" verticalAlign="middle" size="23">
-        <h3>{mealName}</h3>
-      </GridColumn>
-      <GridColumn width={1} textAlign="center" verticalAlign="middle">
+      <GridColumn width={2} textAlign="center" verticalAlign="middle">
         <Icon name="plus circle" size="large" color="green" />
       </GridColumn>
       <Droppable id={id} direction="horizontal">
-        <GridColumn width={11}>
+        <GridColumn width={14} className="mealRow">
+          <div className="background">{mealName}</div>
           <Card.Group itemsPerRow={4}>
             <MealDishes mealData={mealData} />
           </Card.Group>

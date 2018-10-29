@@ -18,8 +18,8 @@ import DaySelect from '../containers/DaySelect';
  */
 export default class Selection extends Component {
   state = {
-    leftLen: 4,
-    rightLen: 12
+    leftLen: 2,
+    rightLen: 14
   };
   render() {
     const { leftLen, rightLen } = this.state;
