@@ -19,7 +19,7 @@ import DaySelect from '../containers/DaySelect';
 export default class Selection extends Component {
   state = {
     leftLen: 2,
-    rightLen: 14
+    rightLen: 12
   };
   render() {
     const { leftLen, rightLen } = this.state;
@@ -34,6 +34,7 @@ export default class Selection extends Component {
             <Column width={rightLen}>
               <DaySelect />
             </Column>
+            <Column width={leftLen} />
           </Row>
           {/* Displays All meals per selected day */}
           <DayMeals />

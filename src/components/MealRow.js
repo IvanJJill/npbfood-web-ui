@@ -11,13 +11,14 @@ export default ({ mealName, mealData, id }) => {
         <Icon name="plus circle" size="large" color="green" />
       </GridColumn>
       <Droppable id={id} direction="horizontal">
-        <GridColumn width={14} className="mealRow">
-          <div className="background">{mealName}</div>
+        <GridColumn width={12} className="mealRow">
+          <div className={'background'}>{mealName}</div>
           <Card.Group itemsPerRow={4}>
             <MealDishes mealData={mealData} />
           </Card.Group>
         </GridColumn>
       </Droppable>
+      <GridColumn width={2} />
     </GridRow>
   );
 };
