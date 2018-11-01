@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Card, Image } from 'semantic-ui-react';
+import { Card, Reveal } from 'semantic-ui-react';
 
 import DraggedItem from './DragWrapper';
 
-import { Ingredients } from '../test/meals_data';
-import DishCardControls from './DishCardControls';
+import CardMainView from './DishCardMainViev';
+import CardPanelView from './DishCardPanelView';
 
 export default class DishCard extends Component {
   state = {
@@ -29,22 +29,18 @@ export default class DishCard extends Component {
     return (
       <DraggedItem id={id} index={idx} key={idx + dish.name}>
         <Card className="dish-card">
-          <Card.Content>
-            <Image floated="left" size="mini" src={dish.image} circular />
-            <DishCardControls onEdit={this.onEdit} onInfo={this.onInfo} />
-            <Card.Header>{dish.name}</Card.Header>
-            <Card.Meta>{dish.amount + 'g'}</Card.Meta>
-            <Card.Description>
-              {!!dish.ingredients
-                ? dish.ingredients.map(i => Ingredients[i].name + ' ')
-                : null}
-            </Card.Description>
-          </Card.Content>
-          {expand && (
-            <Card.Content extra>
-              {info ? dish.name : edit ? 'EDIT BUTTONS' : null}
-            </Card.Content>
-          )}
+          <Reveal animated="move down">
+            <Reveal.Content visible>
+              <CardMainView
+                dish={dish}
+                onInfo={this.onInfo}
+                onEdit={this.onEdit}
+              />
+            </Reveal.Content>
+            <Reveal.Content hidden>
+              <CardPanelView dish={dish} />
+            </Reveal.Content>
+          </Reveal>
         </Card>
       </DraggedItem>
     );
