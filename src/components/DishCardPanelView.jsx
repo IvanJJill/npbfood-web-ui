@@ -7,7 +7,7 @@ const panelView = props => {
   const { dish } = props;
   return (
     <Card.Content>
-      <Image floated="left" size="medium" src={dish.image} />
+      <Image centered fluid size="medium" src={dish.image} />
       <Card.Header>{dish.name}</Card.Header>
       <Card.Meta>{dish.amount + 'g'}</Card.Meta>
       <Card.Description>
