@@ -1,13 +1,7 @@
-////// System libs
-/////////////////////////
 import React, { Component } from 'react';
 
-////// UI
-/////////////////////////
 import { Grid } from 'semantic-ui-react';
 
-////// Components
-/////////////////////////
 import DayMeals from '../containers/DayMeals';
 import DaySelect from '../containers/DaySelect';
 
@@ -16,11 +10,15 @@ import DaySelect from '../containers/DaySelect';
  * It contains selectors for a day of the week as well as meals
  * Also displays all dayly meals and dishes
  */
-export default class Selection extends Component {
-  state = {
-    leftLen: 4,
-    rightLen: 12
-  };
+class Selection extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      leftLen: 4,
+      rightLen: 12,
+    };
+  }
+
   render() {
     const { leftLen, rightLen } = this.state;
     const { Row, Column } = Grid;
@@ -42,3 +40,5 @@ export default class Selection extends Component {
     );
   }
 }
+
+export default Selection;

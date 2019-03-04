@@ -6,7 +6,7 @@ import ReducerMealDropped from './reducerMealDropped';
 const rootReducer = combineReducers({
   meals: MealsReducer,
   selected: DaySelectedReducer,
-  mealDropped: ReducerMealDropped
+  mealDropped: ReducerMealDropped,
 });
 
 export default rootReducer;
