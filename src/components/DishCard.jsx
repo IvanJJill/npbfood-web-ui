@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Card, Image, Ref } from 'semantic-ui-react';
+import { Card, Reveal } from 'semantic-ui-react';
 
-import { Draggable } from 'react-beautiful-dnd';
+import DraggedItem from './DragWrapper';
 
-import { Ingredients } from '../test/meals_data';
-import DishCardControls from './DishCardControls';
+import CardMainView from './DishCardMainViev';
+import CardPanelView from './DishCardPanelView';
 
 export default class DishCard extends Component {
   constructor(props) {
@@ -32,38 +32,23 @@ export default class DishCard extends Component {
 
   render() {
     const { dish, idx, id } = this.props;
-    const { expand, info, edit } = this.state;
     return (
-      <Draggable draggableId={id} index={idx}>
-        {provided => (
-          <Ref innerRef={provided.innerRef}>
-            <Card
-              key={idx + dish.name}
-              className="dish-card"
-              style={{ width: '30%' }}
-              {...provided.dragHandleProps}
-              {...provided.draggableProps}
-            >
-              <Card.Content>
-                <Image floated="left" size="mini" src={dish.image} circular />
-                <DishCardControls onEdit={this.onEdit} onInfo={this.onInfo} />
-                <Card.Header>{dish.name}</Card.Header>
-                <Card.Meta>{`${dish.amount} g`}</Card.Meta>
-                <Card.Description>
-                  {dish.ingredients
-                    ? dish.ingredients.map(i => `${Ingredients[i].name}`)
-                    : null}
-                </Card.Description>
-              </Card.Content>
-              {expand && (
-                <Card.Content extra>
-                  {edit ? 'EDIT BUTTONS' : info || null}
-                </Card.Content>
-              )}
-            </Card>
-          </Ref>
-        )}
-      </Draggable>
+      <DraggedItem id={id} index={idx} key={idx + dish.name}>
+        <Card className="dish-card">
+          <Reveal animated="move down">
+            <Reveal.Content visible>
+              <CardMainView
+                dish={dish}
+                onInfo={this.onInfo}
+                onEdit={this.onEdit}
+              />
+            </Reveal.Content>
+            <Reveal.Content hidden>
+              <CardPanelView dish={dish} />
+            </Reveal.Content>
+          </Reveal>
+        </Card>
+      </DraggedItem>
     );
   }
 }

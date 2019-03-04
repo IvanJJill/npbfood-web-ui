@@ -12,13 +12,12 @@ import DaySelect from '../containers/DaySelect';
  */
 class Selection extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      leftLen: 4,
-      rightLen: 12,
+      leftLen: 2,
+      rightLen: 12
     };
   }
-
   render() {
     const { leftLen, rightLen } = this.state;
     const { Row, Column } = Grid;
@@ -32,6 +31,7 @@ class Selection extends Component {
             <Column width={rightLen}>
               <DaySelect />
             </Column>
+            <Column width={leftLen} />
           </Row>
           {/* Displays All meals per selected day */}
           <DayMeals />
